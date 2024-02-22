@@ -1,7 +1,8 @@
 from tkinter import *
 from ClassFile import *
+from tkinter import messagebox
 
-db = Database("D:/PythonTerm3/ContactManager/mydatabase.db")
+db = Database("D:/CloneRepositoryFromGithub/Contactmanagerforpythonclass/mydatabase.db")
 
 # ===== Def =====
 def insert():
@@ -29,6 +30,11 @@ def clear():
 
 def exit():
     root.destroy()
+
+
+def remove():
+    index = lst_box.curselection(db.datafromdatabase.index)
+    db.remove(lst_box.get(index))
 
 
 # ===== UI =====
@@ -79,16 +85,19 @@ lst_box.place(x=10,y=150)
 
 # ===== Buttons =====
 btn_insert = Button(root,text="Insert",width=5,height=1,font="Arial 12 bold",command=insert)
-btn_insert.place(x=400,y=160)
+btn_insert.place(x=350,y=160)
 
 btn_Fetch = Button(root,text="Fentch",width=5,height=1,font="Arial 12 bold",command=fetch)
-btn_Fetch.place(x=400,y=210)
+btn_Fetch.place(x=350,y=210)
 
 btn_clear = Button(root,text="Clear",width=5,height=1,font="Arial 12 bold",command=clear)
-btn_clear.place(x=400,y=260)
+btn_clear.place(x=350,y=260)
 
 btn_Exit = Button(root,text="Exit",width=5,height=1,font="Arial 12 bold",command=exit)
-btn_Exit.place(x=400,y=310)
+btn_Exit.place(x=350,y=310)
+
+btn_delete = Button(root,text="Delete",width=5,height=1,font="Arial 12 bold",command=remove)
+btn_delete.place(x=450,y=160)
 
 
 
