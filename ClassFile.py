@@ -21,6 +21,12 @@ class Database:
             self.datafromdatabase = (f"{self.field[0]}\t\t,{self.field[1]}\t\t,{self.field[2]}\t\t,{self.field[3]}\t\t,{self.field[4]}")
         
         return self.datafromdatabase
+    
+    
+    def showinlistbox(self):
+        self.cur.execute("SELECT * FROM customer")
+        self.allpeopleindatabase = self.cur.fetchall()
+        return f"{self.allpeopleindatabase}"
         
 
     def remove(self,id):

@@ -12,11 +12,11 @@ def insert():
 
 
 def fetch():
-    recordsfreomlistbox = lst_box.get(lst_box.curselection()).split(",")
-    ent_name.insert(0,recordsfreomlistbox[0])
-    ent_lname.insert(0,recordsfreomlistbox[1])
-    ent_city.insert(0,recordsfreomlistbox[2])
-    ent_tel.insert(0,recordsfreomlistbox[3])
+    recordsfromlistbox = lst_box.get(lst_box.curselection()).split(",")
+    ent_name.insert(0,recordsfromlistbox[1])
+    ent_lname.insert(0,recordsfromlistbox[2])
+    ent_city.insert(0,recordsfromlistbox[3])
+    ent_tel.insert(0,recordsfromlistbox[4])
     lst_box.delete(lst_box.curselection())
 
 
@@ -33,8 +33,15 @@ def exit():
 
 
 def remove():
-    index = lst_box.curselection(db.datafromdatabase.index)
-    db.remove(lst_box.get(index))
+    someonefromedatabase = lst_box.get(lst_box.curselection()).split(",")
+    index = someonefromedatabase[0]
+    db.remove(index)
+    messagebox.showinfo(message="Your objects has deleted",title="Infor from data base")
+    lst_box.delete(lst_box.curselection())
+
+
+def show():
+    lst_box.insert(0,db.showinlistbox())
 
 
 # ===== UI =====
@@ -98,6 +105,9 @@ btn_Exit.place(x=350,y=310)
 
 btn_delete = Button(root,text="Delete",width=5,height=1,font="Arial 12 bold",command=remove)
 btn_delete.place(x=450,y=160)
+
+btn_show = Button(root,text="Show",width=5,height=1,font="Arial 12 bold",command=show)
+btn_show.place(x=450,y=210)
 
 
 
